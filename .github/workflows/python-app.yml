@@ -25,5 +25,5 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: test_image
-          path: test_image.png
+          name: logo_courses_ai
+          path: logo_courses_ai.png
