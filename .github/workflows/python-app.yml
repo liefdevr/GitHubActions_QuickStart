@@ -1,9 +1,6 @@
 name: Sample
 
 on:
-  push:
-    branches: 
-      - main
   workflow_dispatch:
 
 jobs:
