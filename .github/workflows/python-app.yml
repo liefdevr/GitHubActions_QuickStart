@@ -21,23 +21,15 @@ jobs:
       - name: Run Python
         run: python src/imageload_test.py
 
-      - name: Check for changes
+      - name: Push auto-fixed files
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-  
-          git diff --quiet || echo "CHANGES_DETECTED=true" >> $GITHUB_ENV
-  
-      - name: Create Pull Request
-        if: env.CHANGES_DETECTED == 'true'
-        uses: peter-evans/create-pull-request@v6
-        with:
-          branch: "update/scraping-data"
-          title: "Update scraping data (Automated)"
-          body: |
-            This pull request updates the scraping data.
-            - Automated update from GitHub Actions.
-          commit-message: "Update scraping data"
-          base: "master"
-          delete-branch: true
-          labels: "automated update"
+          git remote set-url origin https://github-actions:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
+          git config --global user.name "${GITHUB_ACTOR}"
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          if (git diff --shortstat | grep '[0-9]'); then \
+            git add .; \
+            git commit -m "👕 Fixed auto-fixable textlint errors by github-actions"; \
+            git push origin HEAD:${GITHUB_REF}; \
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
