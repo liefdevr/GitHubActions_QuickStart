@@ -7,4 +7,5 @@ soup = BeautifulSoup(response, 'html.parser')
 response.close()
 
 topstories = soup.find('div', class_='colBoxTopstories')
-print(topstories)
+colboxindexes = topstories.find_all('div', class_='colBoxIndex')
+print(colboxindexes[0])
