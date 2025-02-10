@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 from urllib import request
 
-response = request.urlopen('https://www.jleague.jp/standings/acl2/')
+response = request.urlopen('https://www.jleague.jp/standings/j1/')
 soup = BeautifulSoup(response, 'html.parser')
 response.close()
 
