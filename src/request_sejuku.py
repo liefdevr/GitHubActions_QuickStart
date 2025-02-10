@@ -1,6 +1,6 @@
 import requests
  
-url = "https://www.sejuku.net/blog/"
+url = "http://abehiroshi.la.coocan.jp/"
  
 response = requests.get(url)
 response.encoding = response.apparent_encoding
