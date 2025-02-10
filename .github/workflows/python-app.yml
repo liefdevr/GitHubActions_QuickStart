@@ -19,4 +19,4 @@ jobs:
         run: pip install -r requirements.txt
         
       - name: Run Python
-        run: python src/request_sejuku.py
+        run: python src/scraping_j1league.py
