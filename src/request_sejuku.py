@@ -1,12 +1,9 @@
-import requests
 from bs4 import BeautifulSoup
- 
-url = "https://www.sejuku.net/blog/"
- 
-response = requests.get(url)
-response.encoding = response.apparent_encoding
+from urllib import request
 
-bs = BeautifulSoup(response.text, 'html.parser')
+url = 'https://www.atmarkit.co.jp/ait/subtop/di/'
+response = request.urlopen(url)
+soup = BeautifulSoup(response)
+response.close()
 
-for i in bs.select("h3"):
-    print(i.getText())
+print(soup)
