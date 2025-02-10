@@ -6,4 +6,5 @@ response = request.urlopen(url)
 soup = BeautifulSoup(response)
 response.close()
 
-print(soup)
+topstories = soup.find('div', class_='colBoxTopstories')
+print(topstories)
