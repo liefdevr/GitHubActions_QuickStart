@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 from urllib import request
 
 response = request.urlopen('https://www.jleague.jp/standings/j1/')
-soup = BeautifulSoup(response)
+soup = BeautifulSoup(response, 'html.parser')
 response.close()
 
 table = soup.find_all('tr')
