@@ -1,8 +1,11 @@
 import requests
  
-url = "http://abehiroshi.la.coocan.jp/"
+url = "https://www.sejuku.net/blog/""
  
 response = requests.get(url)
 response.encoding = response.apparent_encoding
- 
-print(response.text)
+
+bs = BeautifulSoup(response.text, 'html.parser')
+
+for i in bs.select("h3"):
+    print(i.getText())
