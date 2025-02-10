@@ -2,3 +2,4 @@ numpy >= 1.21
 urllib3
 pandas
 beautifulsoup4
+requests
